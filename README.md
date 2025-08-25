@@ -10,7 +10,7 @@ Sample Superstore Analysis → Business insights using SQL queries and interacti
 
 ## SQL (MySQL) → Schema design, data storage & analysis
 
-## Tableau → Interactive business dashboards
+## PowerBI → Interactive business dashboards
 
 ## Excel → KPI dashboard with slicers & charts
 
