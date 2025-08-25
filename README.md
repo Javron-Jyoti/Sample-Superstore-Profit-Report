@@ -1,4 +1,4 @@
-#Sample Superstore Profit Report & CRM Analysis
+# Sample Superstore Profit Report & CRM Analysis
 
 This repository contains two major projects:
 
@@ -6,15 +6,15 @@ CRM Project (SQL) → Customer, Sales, Leads, and Rep Management with SQL-based 
 
 Sample Superstore Analysis → Business insights using SQL queries and interactive dashboards in PowerBI
 
-##Tech Stack
+## Tech Stack
 
-##SQL (MySQL) → Schema design, data storage & analysis
+## SQL (MySQL) → Schema design, data storage & analysis
 
-##Tableau → Interactive business dashboards
+## Tableau → Interactive business dashboards
 
-##Excel → KPI dashboard with slicers & charts
+## Excel → KPI dashboard with slicers & charts
 
-#1. CRM Project (SQL)
+# 1. CRM Project (SQL)
 Database: crm_project
 
 The CRM project is designed to manage customers, sales reps, leads, and sales transactions.
@@ -31,9 +31,9 @@ Sales → Sales transactions with product and amount
 
 RepAssignments → Mapping of reps to customers
 
-##Sample Queries
+## Sample Queries
 
-##Top Customers by Spend
+## Top Customers by Spend
 
 SELECT c.Name, SUM(s.Amount) AS TotalSpent
 FROM Customers c
@@ -41,7 +41,7 @@ JOIN Sales s ON c.CustomerID = s.CustomerID
 GROUP BY c.Name
 ORDER BY TotalSpent DESC;
 
-##Customer Conversion Rate
+## Customer Conversion Rate
 
 SELECT 
     c.CustomerID,
@@ -56,14 +56,14 @@ LEFT JOIN Leads l ON c.CustomerID = l.CustomerID
 GROUP BY c.CustomerID, c.Name;
 
 
-##Use Cases:
+## Use Cases:
 
 -Customer profiling & segmentation
 -Lead conversion tracking
 -Sales rep performance analysis
 -Revenue contribution by customer
 
-#2. Sample Superstore Analysis
+# 2. Sample Superstore Analysis
 
 Dataset: Sample Superstore (Kaggle dataset)
 
@@ -75,7 +75,7 @@ Customer Analysis → Order frequency & contribution
 
 Sales Trends → Monthly/Yearly sales performance
 
-##Dashboards
+## Dashboards
 
 PowerBI Dashboard — Interactive visuals for profitability & trends
 
