@@ -1,28 +1,96 @@
-# Sample-Superstore-Profit-Report
-This project showcases an interactive Power BI dashboard created using the Sample Superstore dataset. The dashboard highlights key insights on sales, profit, and quantity performance across different regions, categories, and customer segments.
+#Sample Superstore Profit Report & CRM Analysis
 
-## Key Features
+This repository contains two major projects:
 
-KPIs Overview – Total Sales (19.51K), Profit (5.79K), and Quantity (256).
+CRM Project (SQL) → Customer, Sales, Leads, and Rep Management with SQL-based analysis.
 
-Regional Analysis – Profit distribution by states and regions.
+Sample Superstore Analysis → Business insights using SQL queries and interactive dashboards in PowerBI
 
-Category & Segment Insights – Profit share across product categories and customer segments.
+Tech Stack
 
-Trend Analysis – Line chart of profit by year and quarter.
+SQL (MySQL) → Schema design, data storage & analysis
 
-Sub-Category Ranking – Identifies top and low-performing product sub-categories.
+Tableau → Interactive business dashboards
 
-## Tools & Technologies
+Excel → KPI dashboard with slicers & charts
 
-Power BI for visualization and data modeling
+Pandas (Python) → (Optional) for quick EDA
 
-Sample Superstore dataset
+Project Structure
+Sample-Superstore-Profit-Report-and-CRM-Analysis-using-SQL
+ ┣ crm_project.sql              # CRM database schema & queries
+ ┣ superstore_analysis.sql      # SQL queries on Sample Superstore
+ ┣ Tableau_Dashboard.png        # Snapshot of Tableau Dashboard
+ ┣ Excel_Dashboard.png          # Snapshot of Excel Interactive Dashboard
+ ┗ README.md                    # Documentation
 
-## Insights
+1. CRM Project (SQL)
+Database: crm_project
 
-South region generated 100% of total profit.
+The CRM project is designed to manage customers, sales reps, leads, and sales transactions.
 
-Corporate segment contributed the highest profit share (63.05%).
+Schema Overview
 
-Machines, Accessories, and Phones were the most profitable sub-categories.
+Customers → Customer profile (Name, Region, Industry, Signup Date)
+
+SalesReps → Sales representatives and their regions
+
+Leads → Lead source, status, and conversion tracking
+
+Sales → Sales transactions with product and amount
+
+RepAssignments → Mapping of reps to customers
+
+Sample Queries
+
+Top Customers by Spend
+
+SELECT c.Name, SUM(s.Amount) AS TotalSpent
+FROM Customers c
+JOIN Sales s ON c.CustomerID = s.CustomerID
+GROUP BY c.Name
+ORDER BY TotalSpent DESC;
+
+
+Customer Conversion Rate
+
+SELECT 
+    c.CustomerID,
+    c.Name AS CustomerName,
+    COUNT(l.LeadID) AS TotalLeads,
+    SUM(CASE WHEN l.Status = 'Converted' THEN 1 ELSE 0 END) AS ConvertedLeads,
+    ROUND(
+        (SUM(CASE WHEN l.Status = 'Converted' THEN 1 ELSE 0 END) / COUNT(l.LeadID)) * 100, 2
+    ) AS ConversionRate
+FROM Customers c
+LEFT JOIN Leads l ON c.CustomerID = l.CustomerID
+GROUP BY c.CustomerID, c.Name;
+
+
+Use Cases:
+
+Customer profiling & segmentation
+
+Lead conversion tracking
+
+Sales rep performance analysis
+
+Revenue contribution by customer
+
+2. Sample Superstore Analysis
+
+Dataset: Sample Superstore (Tableau / Kaggle dataset)
+
+Key Analyses
+
+Profitability Analysis → Top categories, regions, and segments
+
+Customer Analysis → Order frequency & contribution
+
+Sales Trends → Monthly/Yearly sales performance
+
+Dashboards
+
+Tableau Dashboard — Interactive visuals for profitability & trends
+
+Excel Dashboard — KPI dashboard with slicers (Category, Segment, Region)
